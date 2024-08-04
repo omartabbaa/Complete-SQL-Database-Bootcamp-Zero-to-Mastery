@@ -22,7 +22,9 @@ SELECT ..., EXTRACT (YEAR FROM AGE(birth_date)) as "age" FROM employees;
 * Question: How many people's zipcode have a 2 in it?.
 * Expected output: 4211 
 */
-
+SELECT count(*)  
+FROM "public"."customers"
+WHERE zip::text LIKE  '%2%';
 
 
 /*
@@ -31,6 +33,9 @@ SELECT ..., EXTRACT (YEAR FROM AGE(birth_date)) as "age" FROM employees;
 * Question: How many people's zipcode start with 2 with the 3rd character being a 1.
 * Expected output: 109 
 */
+SELECT count(customerid) FROM customers
+WHERE zip::text LIKE '2_1%';
+
 
 
 /*
@@ -40,4 +45,5 @@ SELECT ..., EXTRACT (YEAR FROM AGE(birth_date)) as "age" FROM employees;
 * Replace null values with "No State"                                                  
 * Expected output: https://imgur.com/AVe6G4c
 */
+SELECT count(*) from "public"."customers" WHERE phone::text like '302%'
 
